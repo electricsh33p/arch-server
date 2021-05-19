@@ -4,8 +4,8 @@
 
 **Disclaimer:**
 
-- This guide is used for a minimal virtual server. Therefor no `EFI` or `LVM` needed.
-- I use curl to avoid installing wget (just to spare an addtional tool)
+- This guide is used for a minimal virtual server. Therefore no `EFI` or `LVM` needed.
+- I use `curl` to avoid installing wget (just to spare an addtional tool)
 - I dont use the Arch Linux AUR because i would need to install `base-devel` with compiler, etc. I don't want build tools on the server.
 - Important for server operation: Daily updates  
 - If I messed something up, understood something wrong or could do something better please give me a note! :-)
