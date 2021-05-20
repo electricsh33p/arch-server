@@ -196,13 +196,15 @@ echo "sysctl net.ipv4.conf.default.rp_filter=1" >> /etc/sysctl.d/rp_filter.conf
 echo "net.ipv4.tcp_rfc1337=1" > /etc/sysctl.d/tcp_rfc1337.conf
 ```
 
+Before changing the `sshd_config` as described below ensure that your ssh public key is in the `.authorized_keys` file
+
 Harden OpenSSH server through `/etc/ssh/sshd_config`:
 
 ```sh
 Port xy #change to something > 1024 and not in /etc/services so that default nmap scan cannot find ssh
 AddressFamily inet
 KexAlgorithms curve25519-sha256,curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256
-HostKeyAlgorithms rsa-sha2-512,rsa-sha2-256,ssh-rsa,ssh-ed25519
+HostKeyAlgorithms rsa-sha2-512,rsa-sha2-256,ssh-ed25519
 Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com 
 MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com
 PermitRootLogin no
@@ -246,7 +248,6 @@ PORT      STATE SERVICE VERSION
 |   server_host_key_algorithms: (4)
 |       rsa-sha2-512
 |       rsa-sha2-256
-|       ssh-rsa
 |       ssh-ed25519
 |   encryption_algorithms: (3)
 |       chacha20-poly1305@openssh.com
