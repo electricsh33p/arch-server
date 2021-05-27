@@ -139,6 +139,13 @@ Disable LLMNR in `/etc/systemd/resolved.conf`:
 LLMNR=no
 ```
 
+Optionally use DNS over TLS in `/etc/systemd/resolved.conf`:
+
+```shell
+DNS=9.9.9.9#dns.quad9.net
+DNSOverTLS=yes
+```
+
 Harden some mountpoints (/proc, /tmp, /var/tmp and /dev/shm)
 
 `hidepid=2` also hides processes from users which do not belong to them
@@ -155,6 +162,12 @@ Change default file permissions of some relevant files
 
 ```sh
 sudo chmod 700 /boot /etc/{iptables}
+```
+
+Change default umask from `022` to `027` so that newly created files are not world readable. In `/etc/profile`:
+
+```sh
+umask 027
 ```
 
 Contents of `/etc/security/faillock.conf`
